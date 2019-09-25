@@ -22,5 +22,37 @@ a. El usuario emisor de la transferencia elige una de sus cuentas, desde la cual
 b. Ingresa el número de cuenta a quién desea realizar la transferencia.<br /> 
 c. Ingresa el monto a transferir. Debe ser un importe mayor a 0.<br /> 
 
+d. Si todos los datos son confirmados, se realiza la operación, descontando el importe de la cuenta origen y acreditandolo en la cuenta destino. El estado de la transferencia será PENDIENTE.<br /> <br /> 
+Restricciones:<br /> <br /> 
+-
+ No es posible realizar transferencias a uno mismo.
+-
+ Tanto la cuenta origen como la cuenta destino deben existir, y la moneda
+asociada a cada una de ellas tiene que ser la misma.
+-
+ La cuenta origen debe tener dinero suficiente para la transferencia.
+➔ Consultar los datos personales para un determinado usuario, conociendo su número de
+cliente, o bien su número de dni.
+➔ Actualizar los datos personales de un cliente que se encuentra cargado en el sistema.
+Los datos que se podrán cambiar son apellido y nombre.
+➔ Dar de baja a un usuario. Todas sus cuentas asociadas deben quedar también en estado
+BAJA.
+➔ Obtener un listado con detalle de las cuentas bancarias, dado un número de cliente.
+➔ Dado un número de transferencia, se debe poder consultar quienes fueron los usuarios
+que realizaron la operación, el importe y el estado del movimiento.
+Operaciones Opcionales:
+➔ Al realizarse transferencias, el importe solo es descontado de la cuenta de origen, pero
+no es depositado inmediatamente en la cuenta destino. Luego, el banco realiza el
+procesamiento de la operación (no depende de nuestra API) y se debe poder cambiar el
+estado de la operación a PROCESADA o CANCELADA. Una transferencia procesada,
+suma el importe de la operación al saldo de la cuenta destino, mientras que si el nuevo
+estado es CANCELADA, el importe de la transferencia es devuelto a la cuenta origen.
+➔ Como beneficio para sus clientes, la primer cuenta que los usuarios abran en moneda
+PESO_AR, tendrá un bono de regalo de $500, acreditado inmediatamente al darse de
+alta.
+➔ Consultar información sobre las cuentas de sus clientes. Dado un número de cuenta, se
+puede obtener los datos del titular (apellido, nombre, dni).
+➔ Obtener el registro de movimientos realizados en una determinada cuenta en un rango
+de fechas o bien los últimos 5 movimientos.
 
 
