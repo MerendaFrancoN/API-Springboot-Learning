@@ -2,8 +2,9 @@
 Learning to work with Springboot to develop API's with Java.
 <br /> 
 # TODO's
--ERROR POST CON ID RARO
--AGREGAR PAGINADO
+-Devolver solo los campos necesarios y comprobar la devolución de errores
+-Chequear POST en Clientes<br /> 
+-Agregar paginado<br /> 
 <br /> 
 # Ejercicio
 Considere la siguiente realidad:
