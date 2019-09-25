@@ -1,6 +1,12 @@
 # API-Springboot-Learning
 Learning to work with Springboot to develop API's with Java.
 
+# TODO's
+--ERROR POST CON ID RARO
+--AGREGAR PAGINADO
+
+
+
 # Ejercicio
 Considere la siguiente realidad:
 
