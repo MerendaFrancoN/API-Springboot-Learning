@@ -31,7 +31,7 @@ La cuenta origen debe tener dinero suficiente para la transferencia.<br />
 ➔ Dar de baja a un usuario. Todas sus cuentas asociadas deben quedar también en estado BAJA.<br /> 
 ➔ Obtener un listado con detalle de las cuentas bancarias, dado un número de cliente.<br /> 
 ➔ Dado un número de transferencia, se debe poder consultar quienes fueron los usuarios que realizaron la operación, el importe y el estado del movimiento.<br /> <br /> 
-**Operaciones Opcionales:**
+**Operaciones Opcionales:**<br /> <br /> 
 ➔ Al realizarse transferencias, el importe solo es descontado de la cuenta de origen, pero no es depositado inmediatamente en la cuenta destino. Luego, el banco realiza el procesamiento de la operación (no depende de nuestra API) y se debe poder cambiar el
 estado de la operación a PROCESADA o CANCELADA. Una transferencia procesada, suma el importe de la operación al saldo de la cuenta destino, mientras que si el nuevo estado es CANCELADA, el importe de la transferencia es devuelto a la cuenta origen.<br /> <br /> 
 ➔ Como beneficio para sus clientes, la primer cuenta que los usuarios abran en moneda PESO_AR, tendrá un bono de regalo de $500, acreditado inmediatamente al darse de alta.<br /> <br /> 
