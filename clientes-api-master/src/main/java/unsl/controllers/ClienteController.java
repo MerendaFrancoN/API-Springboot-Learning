@@ -1,13 +1,6 @@
 package unsl.controllers;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JacksonAnnotation;
-import com.fasterxml.jackson.annotation.JsonPropertyDescription;
-import com.fasterxml.jackson.databind.annotation.JsonAppend;
-import com.fasterxml.jackson.databind.util.JSONPObject;
-import com.fasterxml.jackson.databind.util.JSONWrappedObject;
-import com.sun.tracing.dtrace.Attributes;
-import jdk.nashorn.internal.ir.debug.JSONWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -61,7 +54,7 @@ public class ClienteController {
 
     @PutMapping(value = "/clientes/{id}")
     @ResponseBody
-    public Object updateClient(@RequestBody Cliente cliente, @PathVariable Long id) {
+    public Object updateClient(@RequestBody Cliente cliente, @PathVariable Long id) {//TODO: Revisar metodo
         Cliente res = clienteService.updateClient(cliente);
         if ( res == null) {
             return new ResponseEntity<>(new ResponseError(404, String.format("Cliente with ID %d not found", cliente.getId())), HttpStatus.NOT_FOUND);
