@@ -9,6 +9,9 @@ import unsl.entities.ResponseError;
 import unsl.entities.Transferencia;
 import unsl.services.TransferenciasService;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 public class TransferenciaController {
 
@@ -22,7 +25,7 @@ public class TransferenciaController {
     @ResponseBody
     @ResponseStatus(HttpStatus.CREATED)
     public Object createTransferencia(@RequestBody Transferencia transferencia) {
-
+        Map<String, Object> mapResponse = new HashMap<>();
 
         try {
             Cuenta cuentaOrigen = transferenciasService.getCuenta(transferencia.getId_cuenta_origen());
@@ -59,7 +62,15 @@ public class TransferenciaController {
             e.printStackTrace();
         }
 
-        return transferenciasService.saveTransferencia(transferencia);
+        transferenciasService.saveTransferencia(transferencia);
+
+        mapResponse.put("id_cuenta_origen",transferencia.getId_cuenta_origen());
+        mapResponse.put("id_cuenta_destino",transferencia.getId_cuenta_destino());
+        mapResponse.put("estado",transferencia.getEstado());
+        mapResponse.put("monto",transferencia.getMonto());
+
+
+        return mapResponse;
 
         /*try {
             Cuenta cuentaOrigen = transferenciasService.getCuenta(transferencia.getId_cuenta_origen());

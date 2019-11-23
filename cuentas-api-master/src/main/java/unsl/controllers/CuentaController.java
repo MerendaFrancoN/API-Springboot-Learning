@@ -1,5 +1,7 @@
 package unsl.controllers;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -50,6 +52,7 @@ public class CuentaController {
             return new ResponseEntity<>(new ResponseError(404, String.format("Cliente con id %d not found ", cuenta.getTitular())), HttpStatus.NOT_FOUND);
         }
 
+        //Not proud of this code. Too lazy to refactor this.
         for(Cuenta cuentax: cuentas){
             if(cuentax.getTipo_moneda() == Cuenta.CurrencyType.PESO_AR)
                 pesoAR = true;
@@ -84,13 +87,19 @@ public class CuentaController {
     @ResponseStatus(HttpStatus.OK)
     public Object updateState(@RequestBody Cuenta updatedCuenta,@PathVariable Long id){
 
+        Map<String, Object> mapResponse = new HashMap<>();
+
         Cuenta result = cuentasService.updateCuenta(updatedCuenta,id);
 
         if ( result == null)
             return new ResponseEntity<>(new ResponseError(404, String.format("Cuenta con id %d not found o saldo negativo", id)), HttpStatus.NOT_FOUND);
         if(updatedCuenta.getSaldo()<0)
             return new ResponseEntity<>(new ResponseError(400, String.format("Cuenta con id %d con Saldo negativo", id)), HttpStatus.BAD_REQUEST);
-        return  result;
+
+        mapResponse.put("id",result.getId());
+        mapResponse.put("saldo",result.getSaldo());
+        mapResponse.put("estado",result.getStatus());
+        return  mapResponse;
 
     }
 }

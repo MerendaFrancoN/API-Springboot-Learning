@@ -9,7 +9,7 @@ import java.io.IOException;
 @Component
 @Order(1)
 public class ResquestResponseFilter implements Filter {
-    private  int failRatio=50;
+    int failRatio=50;
     int minResponseTime=100;
     int maxResponseTime=1000;
 
@@ -20,7 +20,7 @@ public class ResquestResponseFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         long responseTime=Math.round(Math.random()*(maxResponseTime-minResponseTime)+minResponseTime);
-        long fail=Math.round(Math.random()*100);
+        long fail=Math.round(0.3*100);
         try {
             Thread.sleep(responseTime);
         } catch (InterruptedException e) {

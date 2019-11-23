@@ -28,7 +28,7 @@ public class CuentasService {
     }
 
     public Cliente getCliente(Long clienteId) throws Exception{
-        return restService.getCliente(String.format("http://3.81.148.169:8887/clientes/%d",clienteId));
+        return restService.getCliente(String.format("http://127.0.0.1:8888/clientes/%d",clienteId));
     }
 
     public Cuenta updateCuenta(Cuenta updatedCuenta, Long id){
