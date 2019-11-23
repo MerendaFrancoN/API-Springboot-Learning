@@ -1,6 +1,11 @@
 # API-Springboot-Learning
 Learning to work with Springboot to develop API's with Java.
-
+<br /> 
+# TODO's
+-Devolver solo los campos necesarios y comprobar la devolución de errores <br /> 
+-Chequear POST en Clientes<br /> 
+-Agregar paginado<br /> 
+<br /> 
 # Ejercicio
 Considere la siguiente realidad:
 
