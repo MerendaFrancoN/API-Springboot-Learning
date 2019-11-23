@@ -1,5 +1,7 @@
 package unsl.utils;
 
+import org.springframework.retry.annotation.Backoff;
+import org.springframework.retry.annotation.Retryable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.HttpServerErrorException;
@@ -9,6 +11,8 @@ import unsl.entities.Cliente;
 @Service
 public class RestService {
 
+
+    @Retryable( maxAttempts = 4, backoff = @Backoff(1000))
     public Cliente getCliente(String url) throws Exception{
         RestTemplate restTemplate = new RestTemplate();
 

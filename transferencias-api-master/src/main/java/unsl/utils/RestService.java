@@ -31,7 +31,6 @@ public class RestService {
 
         try{
             HttpEntity<Cuenta> requestEntity = new HttpEntity<>(updatedCuenta);
-                //restTemplate.patchForObject(url,requestEntity,Cuenta.class); //TODO: ERROR WITH PATCH
             restTemplate.put(url,requestEntity);
         }catch (Exception e){
             throw new Exception(buildMessageError(e));
