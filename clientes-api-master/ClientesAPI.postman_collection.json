@@ -1,0 +1,224 @@
+{
+	"info": {
+		"_postman_id": "e199820a-7e78-4410-9da3-df1b73b884ff",
+		"name": "ClientesAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Crear cliente 1",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"dni\":39381308,\n\t\"nombre\":\"Franco\",\n\t\"apellido\":\"Merenda\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/clientes/",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"clientes",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear cliente 2",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"dni\":39381310,\n\t\"nombre\":\"Nicolas\",\n\t\"apellido\":\"Mendiondo\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/clientes/",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"clientes",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear cliente 3",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"dni\":21212121,\n\t\"nombre\":\"Max\",\n\t\"apellido\":\"Power\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/clientes/",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"clientes",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Clientes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/clientes/",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"clientes",
+						""
+					]
+				},
+				"description": "Get Clientes\n"
+			},
+			"response": []
+		},
+		{
+			"name": "GET Clientes Busqueda",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/clientes/busqueda?dni=39381308",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"clientes",
+						"busqueda"
+					],
+					"query": [
+						{
+							"key": "dni",
+							"value": "39381308"
+						}
+					]
+				},
+				"description": "Get Clientes\n"
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Clientes",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nombre\":\"Nuevo\",\n\t\"apellido\":\"Nombre\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/clientes/1",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"clientes",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT DELETE",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"estado\": \"BAJA\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/clientes/1",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"clientes",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
