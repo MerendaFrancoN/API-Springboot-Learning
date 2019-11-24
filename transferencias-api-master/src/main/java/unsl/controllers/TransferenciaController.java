@@ -72,45 +72,6 @@ public class TransferenciaController {
 
         return mapResponse;
 
-        /*try {
-            Cuenta cuentaOrigen = transferenciasService.getCuenta(transferencia.getId_cuenta_origen());
-            Cuenta cuentaDestino = transferenciasService.getCuenta(transferencia.getId_cuenta_destino());
-            double saldoFinalOrigen = 0.0;
-            double saldoFinalDestino = 0.0;
-
-
-            if(cuentaDestino == null || cuentaOrigen == null)
-                return new ResponseEntity<>(new ResponseError(404, "Cuenta de origen o destina no existente"), HttpStatus.NOT_FOUND);
-
-            if(cuentaDestino.getId() == cuentaOrigen.getId())
-                return new ResponseEntity<>(new ResponseError(400, "Cuenta de origen y destino iguales"), HttpStatus.BAD_REQUEST);
-
-            if(transferencia.getMonto() < 0 )
-                return new ResponseEntity<>(new ResponseError(400, "Monto de la transferencia no puede ser negativo"), HttpStatus.BAD_REQUEST);
-
-            if(cuentaDestino.getTipo_moneda() != cuentaOrigen.getTipo_moneda())
-                return new ResponseEntity<>(new ResponseError(400, "Cuenta de origen y destino de distintos tipos"), HttpStatus.BAD_REQUEST);
-
-
-            saldoFinalOrigen = cuentaOrigen.getSaldo()- transferencia.getMonto();
-            saldoFinalDestino = cuentaDestino.getSaldo() + transferencia.getMonto();
-
-            if(saldoFinalDestino < 0.0 || saldoFinalOrigen < 0.0)
-                return new ResponseEntity<>(new ResponseError(400, "Saldo insuficiente"), HttpStatus.BAD_REQUEST);
-
-            cuentaDestino.setSaldo(saldoFinalDestino);
-            cuentaOrigen.setSaldo(saldoFinalOrigen);
-
-            transferenciasService.updateCuenta(cuentaOrigen);
-            transferenciasService.updateCuenta(cuentaDestino);
-
-            transferencia.setEstado(Transferencia.Status.PENDIENTE);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-
-        return transferenciasService.saveTransferencia(transferencia);*/
     }
 
     @PutMapping(value="/transferencias/{id}")

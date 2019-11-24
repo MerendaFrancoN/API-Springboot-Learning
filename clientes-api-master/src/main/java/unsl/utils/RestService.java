@@ -1,4 +1,4 @@
-package utils;
+package unsl.utils;
 
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;

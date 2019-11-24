@@ -9,7 +9,7 @@ import unsl.config.CacheConfig;
 import unsl.entities.Cliente;
 import unsl.entities.Cuenta;
 import unsl.repository.ClienteRepository;
-import utils.RestService;
+import unsl.utils.RestService;
 
 @Service
 public class ClienteService {
