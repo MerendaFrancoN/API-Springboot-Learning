@@ -74,33 +74,22 @@ public class ClienteController {
         }
         mapResponse.put("nombre",res.getNombre());
         mapResponse.put("apellido",res.getApellido());
+        mapResponse.put("estado", res.getEstado());
+
         return mapResponse;
     }
 
     @DeleteMapping(value = "/clientes/{id}")
     @ResponseBody
     public Object deleteClient(@PathVariable Long id) {
+        Map<String, Object> mapResponse = new HashMap<>();
+
         Cliente res = clienteService.deleteClient(id);
         if ( res == null) {
             return new ResponseEntity<>(new ResponseError(404, String.format("Cliente with ID %d not found", id)), HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity(null,HttpStatus.NO_CONTENT);
-    }
-
-    @PatchMapping(value = "/clientes/{id}")
-    @ResponseBody
-    public Object deleteLogicClient(@RequestBody Cliente cliente, @PathVariable Long id){
-        Map<String, Object> mapResponse = new HashMap<>();
-        Cliente res = clienteService.getCliente(id);
-
-        if(cliente.getEstado()!=null) //TODO: Better?
-            res.setEstado(cliente.getEstado());
-
-
-        clienteService.saveClient(res);
 
         mapResponse.put("estado",res.getEstado());
-
         return mapResponse;
     }
 

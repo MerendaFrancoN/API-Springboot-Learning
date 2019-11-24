@@ -58,6 +58,8 @@ public class ClienteService {
             cliente.setNombre(updatedClient.getNombre());
         if(updatedClient.getApellido() != null)
             cliente.setApellido(updatedClient.getApellido());
+        if(updatedClient.getEstado() != null)
+            cliente.setEstado(updatedClient.getEstado());
 
         return clienteRepository.save(cliente);
     }
