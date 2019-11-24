@@ -28,7 +28,7 @@ public class CuentasService {
     }
 
     public Cliente getCliente(Long clienteId) throws Exception{
-        return restService.getCliente(String.format("http://webserver-balancer-1881436461.us-east-1.elb.amazonaws.com/clientes/%d",clienteId));
+        return restService.getCliente(String.format("http://localhost:8888/clientes/%d",clienteId));
     }
 
     public Cuenta updateCuenta(Cuenta updatedCuenta, Long id){
@@ -46,5 +46,16 @@ public class CuentasService {
     }
 
 
+    public Cuenta deleteCuenta(Long id) {
+        Cuenta cuenta = cuentaRepository.findById(id).orElse(null);;
+        if (cuenta ==  null){
+            return null;
+        }
+        else{
+            cuenta.setStatus(Cuenta.Status.BAJA);
 
+            return cuentaRepository.save(cuenta);
+        }
+
+    }
 }

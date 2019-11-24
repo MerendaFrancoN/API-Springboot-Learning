@@ -102,5 +102,19 @@ public class CuentaController {
         return  mapResponse;
 
     }
+
+    @DeleteMapping(value = "/cuentas/{id}")
+    @ResponseBody
+    public Object deleteCuenta(@PathVariable("id") Long id) {
+        Cuenta cuenta = cuentasService.deleteCuenta(id);
+        if ( cuenta == null)
+            return new ResponseEntity<>(new ResponseError(404, String.format("Cuenta con id %d no encontrado.", id)), HttpStatus.NOT_FOUND);
+
+        return cuenta;
+    }
+
+
+
+
 }
 
