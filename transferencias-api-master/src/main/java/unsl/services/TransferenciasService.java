@@ -23,12 +23,12 @@ public class TransferenciasService {
     }
 
     public Cuenta getCuenta(Long id) throws Exception{
-        return restService.getCuenta(String.format("http://webserver-balancer-1881436461.us-east-1.elb.amazonaws.com/cuentas/%d",id));
+        return restService.getCuenta(String.format("http://localhost:8887/cuentas/%d",id));
 
     }
 
     public void updateCuenta(Cuenta cuenta) throws  Exception{
-        restService.updateCuenta(String.format("http://webserver-balancer-1881436461.us-east-1.elb.amazonaws.com/cuentas/%d",cuenta.getId()),cuenta);
+        restService.updateCuenta(String.format("http://localhost:8887/cuentas/%d",cuenta.getId()),cuenta);
 
 
     }

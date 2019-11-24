@@ -19,7 +19,16 @@ public class TransferenciaController {
     TransferenciasService transferenciasService;
 
 
-
+    @GetMapping(value = "/transferencias/{transferenciaID}")
+    @ResponseBody
+    @ResponseStatus(HttpStatus.OK)
+    public Object getAccount(@PathVariable("transferenciaID") Long transferenciaID) {
+        Transferencia transferencia = transferenciasService.getTransferencia(transferenciaID);
+        if ( transferencia == null) {
+            return new ResponseEntity<>(new ResponseError(404, String.format("Cuenta %d not found", transferenciaID)), HttpStatus.NOT_FOUND);
+        }
+        return transferencia;
+    }
 
     @PostMapping(value = "/transferencias")
     @ResponseBody
@@ -112,6 +121,8 @@ public class TransferenciaController {
         return transferenciasService.saveTransferencia(transferenciaToProcess);
 
     }
+
+
 
 }
 
