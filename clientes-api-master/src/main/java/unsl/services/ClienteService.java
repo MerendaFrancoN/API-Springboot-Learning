@@ -1,18 +1,24 @@
 package unsl.services;
+import java.util.Iterator;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import unsl.config.CacheConfig;
 import unsl.entities.Cliente;
+import unsl.entities.Cuenta;
 import unsl.repository.ClienteRepository;
+import utils.RestService;
 
 @Service
 public class ClienteService {
+
     @Autowired
     ClienteRepository clienteRepository;
+
+    @Autowired
+    RestService restService;
 
     @Cacheable(value = CacheConfig.CLIENTE_CACHE)
     public List<Cliente> getAll() {
@@ -61,7 +67,21 @@ public class ClienteService {
         Cliente cliente = clienteRepository.findById(userId).orElse(null);
         if (cliente ==  null){
             return null;
-        }cliente.setEstado(Cliente.Status.BAJA);
+        }
+
+        cliente.setEstado(Cliente.Status.BAJA);
+
+        List<Cuenta> cuentas;
+        try {
+            cuentas = restService.getCuentas("http://localhost:8887/cuentas/busqueda?titular="+userId);
+            Iterator i = cuentas.iterator();
+            while(i.hasNext()){
+                Cuenta cuentaTmp = (Cuenta) i.next();
+                restService.logicDeleteCuenta("http://localhost:8887/cuentas/"+cuentaTmp.getId());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         return clienteRepository.save(cliente);
     }
