@@ -1,6 +1,7 @@
 package unsl.services;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
@@ -13,33 +14,33 @@ public class ClienteService {
     @Autowired
     ClienteRepository clienteRepository;
 
-    @Cacheable(CacheConfig.CLIENTE_CACHE)
+    @Cacheable(value = CacheConfig.CLIENTE_CACHE)
     public List<Cliente> getAll() {
 
         simulateSlowService();
         return clienteRepository.findAll();
     }
 
-    @Cacheable(CacheConfig.CLIENTE_CACHE)
+    @Cacheable(value = CacheConfig.CLIENTE_CACHE)
     public Cliente getCliente(Long clientId) {
 
         simulateSlowService();
         return clienteRepository.findById(clientId).orElse(null);
     }
 
-    @Cacheable(CacheConfig.CLIENTE_CACHE)
+    @Cacheable(value = CacheConfig.CLIENTE_CACHE)
     public Cliente findByDni(Long dni) {
 
         simulateSlowService();
         return clienteRepository.findByDni(dni);
     }
 
-    @CachePut(CacheConfig.CLIENTE_CACHE)
+    @CacheEvict(value = CacheConfig.CLIENTE_CACHE, allEntries = true)
     public Cliente saveClient(Cliente cliente) {
         return clienteRepository.save(cliente);
     }
 
-    @CachePut(CacheConfig.CLIENTE_CACHE)
+    @CacheEvict(value = CacheConfig.CLIENTE_CACHE, allEntries = true)
     public Cliente updateClient(Cliente updatedClient){
         Cliente cliente = clienteRepository.findById(updatedClient.getId()).orElse(null);
 
@@ -55,7 +56,7 @@ public class ClienteService {
         return clienteRepository.save(cliente);
     }
 
-    @CachePut(CacheConfig.CLIENTE_CACHE)
+    @CacheEvict(value = CacheConfig.CLIENTE_CACHE, allEntries = true)
     public Cliente deleteClient(Long userId) {
         Cliente cliente = clienteRepository.findById(userId).orElse(null);
         if (cliente ==  null){
